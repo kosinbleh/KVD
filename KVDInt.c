@@ -18,7 +18,23 @@ void KVD_Int_Append(KVD_Int* arr, int new){
 }
 
 void KVD_Int_Remove(KVD_Int* arr, int idx){
+    if(idx < 0 || idx > arr->len){
+        return;
+    } 
     
+    for(int i = idx; i < arr->len - 1; i++){
+        arr->arr[i] = arr->arr[i + 1];
+    }
+    
+    arr->len -= 1;
+}
+
+int* KVD_Int_Get(KVD_Int* arr, int idx){
+    if(idx < 0 || idx > arr->len){
+        return 0;
+    } 
+    
+    return &arr->arr[idx];
 }
 
 void KVD_Int_Free(KVD_Int* arr){
